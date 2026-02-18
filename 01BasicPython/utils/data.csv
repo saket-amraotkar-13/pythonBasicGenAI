@@ -1,0 +1,11 @@
+City,State,Country,Weather,Temperature_C
+New York,NY,USA,Sunny,5
+Los Angeles,CA,USA,Cloudy,18
+Chicago,IL,USA,Snowy,-2
+Houston,TX,USA,Rainy,22
+Phoenix,AZ,USA,Sunny,25
+Seattle,WA,USA,Rainy,12
+Denver,CO,USA,Sunny,10
+Miami,FL,USA,Humid,28
+Boston,MA,USA,Windy,3
+San Francisco,CA,USA,Foggy,14

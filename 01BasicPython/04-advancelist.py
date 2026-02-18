@@ -64,7 +64,7 @@
 # my_fruits.add("fig") #adding an element to the set
 # print(my_fruits) #printing the set after adding an element   
 
-###tupple
+###tupple are like lists but they are immutable, meaning they cannot be changed after they are created
 # my_tuple = ("apple", "banana", "cherry", "date", "elderberry","raspberry") #creating a tuple of fruits
 # print(my_tuple) #printing the tuple of fruits
 # print(my_tuple[0]) #printing the first element of the tuple
