@@ -2,6 +2,7 @@ import math
 a = 3
 b = 2
 
+c = 3
 # my_add = a + b
 # print("Addition:", my_add)
 # my_sub = a - b
