@@ -13,4 +13,4 @@ data = pd.read_csv('01BasicPython/utils/data.csv') #reading the csv file and sto
 # data['Temperature_C'] = (data['Temperature'] - 32) * 5.0/9.0 #converting the temperature from Fahrenheit to Celsius and storing it in a new column called 'Temperature_C'
 # print(data) #printing the updated data with the new column 'Temperature_C'
 
-print(data['Temperature'].mean()) #calculating the mean temperature and printing it
+print(data['Temperature'].mean()) #calculating the mean temperature and printing 
