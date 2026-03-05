@@ -1,0 +1,8 @@
+{
+    "python-envs.defaultEnvManager": "ms-python.python:system",    
+    "python.pythonPath": "C:\\Users\\Saket\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+    "python.defaultInterpreterPath": "C:\\Saket\\VsCodeWoskspace\\.venv\\Scripts\\python.exe"
+    
+
+
+}

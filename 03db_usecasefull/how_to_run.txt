@@ -1,0 +1,14 @@
+###1. Setup Cloud DAAS from aiven.io - free db for postgres
+-- Install tool pgAdmin just like hana studio to connect with cloud postgress DB
+https://www.pgadmin.org/download/pgadmin-4-windows/
+
+-- setup free account on aiven.io - postgress
+-- get db account for pgAdmin
+-- create .env file for db url
+
+###2. Execute DB Module
+
+python - m venv virtual_env
+.\virtual_env\Scripts\activate
+python pip install -r requirements.txt
+python init_db.py
