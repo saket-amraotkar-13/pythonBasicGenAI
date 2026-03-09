@@ -36,24 +36,42 @@ else:
     logging.warning(f"Config file not found at: {config_path}")
 
 ## 5. HANA connection config
-hana = {
-    'credentials': {
-        'host':     os.getenv("HANA_HOST"),
-        'port':     os.getenv("HANA_PORT", "443"),
-        'user':     os.getenv("HANA_USER"),
-        'password': os.getenv("HANA_PASSWORD"),
-    }
-}
-
-## Validate required HANA env variables
-required_vars = ['HANA_HOST', 'HANA_USER', 'HANA_PASSWORD']
-missing_vars = [var for var in required_vars if not os.getenv(var)]
-
-if missing_vars:
-    logging.error(f"Missing required env variables: {missing_vars}")
-    hana = None
+# Detect if running on BTP (VCAP_SERVICES present) or local
+if os.getenv("VCAP_SERVICES"):
+    ## BTP deployment — get credentials from service binding
+    try:
+        from cfenv import AppEnv
+        env = AppEnv()
+        hana_service = env.get_service(label='hana')
+        hana = {
+            'credentials': {
+                'host':     hana_service.credentials.get('host'),
+                'port':     str(hana_service.credentials.get('port', '443')),
+                'user':     hana_service.credentials.get('user'),
+                'password': hana_service.credentials.get('password'),
+            }
+        }
+        logging.info(f"BTP: HANA service binding loaded. Host: {hana['credentials']['host']}")
+    except Exception as e:
+        logging.error(f"BTP: Failed to load HANA service binding: {e}")
+        hana = None
 else:
-    logging.info(f"HANA connection configured for host: {hana['credentials']['host']}")
+    ## Local development — get credentials from .env file
+    hana = {
+        'credentials': {
+            'host':     os.getenv("HANA_HOST"),
+            'port':     os.getenv("HANA_PORT", "443"),
+            'user':     os.getenv("HANA_USER"),
+            'password': os.getenv("HANA_PASSWORD"),
+        }
+    }
+    required_vars = ['HANA_HOST', 'HANA_USER', 'HANA_PASSWORD']
+    missing_vars = [var for var in required_vars if not os.getenv(var)]
+    if missing_vars:
+        logging.error(f"Missing required env variables: {missing_vars}")
+        hana = None
+    else:
+        logging.info(f"Local: HANA connection configured for host: {hana['credentials']['host']}")
 
 
 ## 6. Define class

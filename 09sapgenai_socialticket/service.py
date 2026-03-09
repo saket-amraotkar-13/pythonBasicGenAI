@@ -1,7 +1,7 @@
 ## 1. Import flask framework
-import json
 from flask_cors import CORS
 from flask import Flask, request, jsonify
+import os
 
 ## Import our class from app.py
 from app import issue_reporting_app
@@ -39,4 +39,5 @@ def create_app():
     return app
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', 8080)
+    port = int(os.environ.get('PORT', 8080))   # dynamic port for BTP CF
+    app.run('0.0.0.0', port)
